@@ -1,0 +1,56 @@
+setting:
+  #图片储存根目录,例如:xxx/
+  file-root: D:/images/
+
+  #原图存放相对路径,例如:xxx/
+  origin-path: origin/
+
+  #缩略图存放相对路径,例如:xxx/
+  compact-path: compact/
+
+  #图片地址前缀,例如:www.xxx.com/
+  image-url-prefix: http://www.test.cn/
+
+  #log文件位置
+  logFile: D:/JavaWeb/logs/SecondhandMarket/log.log
+
+  #数据库相关配置
+  jdbc:
+    host: localhost
+    port: 3306
+    database: meng
+    username: root
+    password: root
+
+
+################################以下配置不用改动################################
+server:
+  port: 80
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${setting.jdbc.host}:${setting.jdbc.port}/${setting.jdbc.database}?useSSL=false&serverTimezone=UTC&&allowMultiQueries=true
+    username: ${setting.jdbc.username}
+    password: ${setting.jdbc.password}
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+
+  mvc:
+    favicon:
+      enabled: false
+
+  jackson:
+    date-format: yyyy-MM-dd
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    root: error
+#    cn.jxust.secondhandmarket.mapper: debug
+  file: ${setting.logFile}
